@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -40,11 +39,18 @@ public class AboutActivity extends AppCompatActivity {
 
         // Handle Navigation Clicks
         navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_home) {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
                 startActivity(new Intent(AboutActivity.this, HomeActivity.class));
-            } else if (item.getItemId() == R.id.nav_logout) {
+                finish(); // Close AboutActivity after navigation
+            } else if (id == R.id.nav_profile) {
+                startActivity(new Intent(AboutActivity.this, ProfileActivity.class));
+                finish(); // Close AboutActivity after navigation
+            } else if (id == R.id.nav_logout) {
                 logout();
             }
+
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
@@ -63,6 +69,15 @@ public class AboutActivity extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(AboutActivity.this, LoginActivity.class));
-        finish();
+        finish(); // Finish AboutActivity so the user can't navigate back
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START); // Close drawer if open
+        } else {
+            super.onBackPressed(); // Handle the back button
+        }
     }
 }
