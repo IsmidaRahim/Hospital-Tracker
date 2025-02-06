@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,21 +22,22 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about); // Ensure this is the correct layout
+        setContentView(R.layout.activity_about);
 
         // Set up the toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar); // This should find the toolbar by its ID
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Initialize DrawerLayout and NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        // Set up the toggle button
-        toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        if (drawerLayout != null) {
+            toggle = new ActionBarDrawerToggle(
+                    this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+            drawerLayout.addDrawerListener(toggle);
+            toggle.syncState();
+        }
 
         // Handle Navigation Clicks
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -43,10 +45,10 @@ public class AboutActivity extends AppCompatActivity {
 
             if (id == R.id.nav_home) {
                 startActivity(new Intent(AboutActivity.this, HomeActivity.class));
-                finish(); // Close AboutActivity after navigation
+                finish();
             } else if (id == R.id.nav_profile) {
                 startActivity(new Intent(AboutActivity.this, ProfileActivity.class));
-                finish(); // Close AboutActivity after navigation
+                finish();
             } else if (id == R.id.nav_logout) {
                 logout();
             }
@@ -57,9 +59,8 @@ public class AboutActivity extends AppCompatActivity {
 
         // Set up the clickable website link
         TextView websiteLink = findViewById(R.id.website_link);
-        websiteLink.setMovementMethod(LinkMovementMethod.getInstance());  // Enable clickable links
+        websiteLink.setMovementMethod(LinkMovementMethod.getInstance());
         websiteLink.setOnClickListener(v -> {
-            // Open the website in a browser when clicked
             Uri webpage = Uri.parse("https://github.com/AhmadZahidi/Hospital-Tracker");
             Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(intent);
@@ -69,15 +70,15 @@ public class AboutActivity extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(AboutActivity.this, LoginActivity.class));
-        finish(); // Finish AboutActivity so the user can't navigate back
+        finish();
     }
 
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START); // Close drawer if open
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed(); // Handle the back button
+            super.onBackPressed();
         }
     }
 }

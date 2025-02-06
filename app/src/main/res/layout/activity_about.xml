@@ -1,50 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8F5E9"
     tools:context=".AboutActivity">
 
-    <!-- Main content layout -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center"
+        android:padding="16dp">
 
+        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="About This Application"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:paddingBottom="16dp" />
+            android:textColor="#000000"
+            android:paddingBottom="16dp"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Developers:"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#000000"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- First Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="1. Zahidi \n2. Haziq \n3. Iyaz \n4. Arifhakimi"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:id="@+id/imageHazwani"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/hazwani_photo"
+                    android:contentDescription="Hazwani Photo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hazwani"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:id="@+id/imageShafika"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/shafika_photo"
+                    android:contentDescription="Shafika Photo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shafika"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Second Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:id="@+id/imageFarah"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/farah_photo"
+                    android:contentDescription="Farah Photo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Farah"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:id="@+id/imageIsmida"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ismida_photo"
+                    android:contentDescription="Ismida Photo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ismida"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Copyright and Website Link -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Copyright © 2025 Hospital Locator App. All rights reserved."
             android:textSize="14sp"
             android:textStyle="italic"
-            android:paddingBottom="16dp"/>
+            android:paddingTop="16dp"
+            android:gravity="center" />
 
-        <!-- Linkified TextView for website -->
         <TextView
             android:id="@+id/website_link"
             android:layout_width="wrap_content"
@@ -53,16 +166,17 @@
             android:textSize="16sp"
             android:textColor="@android:color/holo_blue_dark"
             android:textStyle="bold"
-            android:linksClickable="true"/>
+            android:linksClickable="true"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="16dp"/>
     </LinearLayout>
 
-
-    <!-- Navigation Drawer (Side menu) -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

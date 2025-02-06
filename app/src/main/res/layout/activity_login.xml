@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA ">
+    android:background="#F8F9FA">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -25,7 +25,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Email"
-        android:textColor="#6C757D "
+        android:textColor="#6C757D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -40,7 +40,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Password"
-        android:textColor="#6C757D "
+        android:textColor="#6C757D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -52,7 +52,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#007BFF"
+        android:backgroundTint="#006400"
         android:text="Login"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +68,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="Don't have an account? Register here"
-        android:textColor="#007BFF"
+        android:textColor="#006400"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +113,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.327" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
